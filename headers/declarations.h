@@ -133,6 +133,13 @@ typedef struct
     Codes_LEX token;
     char identif[31];
     char value[31];
+    int ligne;
+    int colonne;
+    int p_type;
+    int np_type;
+    int size;
+    char r_value[100];
+    bool isconst;
 } Maptoken;
 
 //--------
@@ -161,11 +168,11 @@ typedef struct
     int colonneErreur;
 } Erreurs;
 //-------------------------------------
-Erreurs mes_err[5] = {{CAR_INC, "caractère inconnu"},
+Erreurs mes_err[5] = {{CAR_INC, "caract?re inconnu"},
                       {FICH_VID, "fichier vide"},
                       {ID_LONG, "l'identifiant est long"},
                       {NUM_LONG, "le nombre est grand"},
-                      {MORE_THEN_CHAR, "le type char ne peut avoir plus d'un caractère"}};
+                      {MORE_THEN_CHAR, "le type char ne peut avoir plus d'un caract?re"}};
 //--------
 Erreurs Error_table[SIZE];
 int curseur = 0;
@@ -229,20 +236,20 @@ Maptoken_erreur maperror[35] = {
     {WHILE_TOKEN, "Error : un 'WHILE'est  manquant"},
     {DO_TOKEN, "Error : un 'DO'est  manquant"},
     {CIN_TOKEN, "Error : erreur de lecture "},
-    {COUT_TOKEN, "Error : erreur d'écréture"},
+    {COUT_TOKEN, "Error : erreur d'?cr?ture"},
     {PV_TOKEN, "Error : un ';'est  manquant"},
-    {PLUS_TOKEN, "Error :une opération mathématique ne peut etre efféctuer sans opérateur"},
-    {MOINS_TOKEN, "Error :une opération mathématique ne peut etre efféctuer sans opérateur"},
-    {MULT_TOKEN, "Error :une opération mathématique ne peut etre efféctuer sans opérateur"},
-    {DIV_TOKEN, "Error :une opération mathématique ne peut etre efféctuer sans opérateur"},
+    {PLUS_TOKEN, "Error :une op?ration math?matique ne peut etre eff?ctuer sans op?rateur"},
+    {MOINS_TOKEN, "Error :une op?ration math?matique ne peut etre eff?ctuer sans op?rateur"},
+    {MULT_TOKEN, "Error :une op?ration math?matique ne peut etre eff?ctuer sans op?rateur"},
+    {DIV_TOKEN, "Error :une op?ration math?matique ne peut etre eff?ctuer sans op?rateur"},
     {VIR_TOKEN, "Error : un ','est  manquant"},
     {AFF_TOKEN, "Error : un ':='est  manquant"},
     {EG_TOKEN, "Error : un '='est  manquant"},
-    {INF_TOKEN, "Error :une opération  booléenne ne peut etre efféctuer sans opérateur"},
-    {INFEG_TOKEN, "Error :une opération  booléenne ne peut etre efféctuer sans opérateur"},
-    {SUP_TOKEN, "Error :une opération  booléenne ne peut etre efféctuer sans opérateur"},
-    {SUPEG_TOKEN, "Error :une opération  booléenne ne peut etre efféctuer sans opérateur"},
-    {DIFF_TOKEN, "Error :une opération  booléenne ne peut etre efféctuer sans opérateur"},
+    {INF_TOKEN, "Error :une op?ration  bool?enne ne peut etre eff?ctuer sans op?rateur"},
+    {INFEG_TOKEN, "Error :une op?ration  bool?enne ne peut etre eff?ctuer sans op?rateur"},
+    {SUP_TOKEN, "Error :une op?ration  bool?enne ne peut etre eff?ctuer sans op?rateur"},
+    {SUPEG_TOKEN, "Error :une op?ration  bool?enne ne peut etre eff?ctuer sans op?rateur"},
+    {DIFF_TOKEN, "Error :une op?ration  bool?enne ne peut etre eff?ctuer sans op?rateur"},
     {PO_TOKEN, "Error : un '('est  manquant"},
     {PF_TOKEN, "Error : un ')'est  manquant"},
     {FIN_TOKEN, "Error :erreur"},
@@ -285,6 +292,3 @@ void push();
 void Analex();
 void commentignore();
 void display();
-//____________
-//partie syntaxique
-//---------------------

@@ -25,7 +25,7 @@ void Test_Symbole(Codes_LEX token)
     else if (c == 0)
     {
 
-        // printf("%s\n dans la ligne : %d colonne :%d \n", maperror[token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -64,6 +64,9 @@ void FTYPE()
         Test_Symbole(PF_TOKEN);
         STMT();
         break;
+    default:
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[ID_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;    
     }
 }
 void VARDECLLIST()
@@ -84,7 +87,8 @@ void VARDECLLIST1()
     case PV_TOKEN:
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[VIR_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -110,7 +114,8 @@ void VARVALLIST()
     case PV_TOKEN:
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[AFF_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 void VARID()
@@ -134,7 +139,8 @@ void VARIDEXTRA()
     case VIR_TOKEN:
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[CRO_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -152,7 +158,8 @@ void TYPE()
         Symbole_Suiv();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[INT_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -170,7 +177,8 @@ void PARAMS()
         STMT();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[INT_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -194,7 +202,8 @@ void PARAMSLIST1()
         STMT();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[VIR_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -222,7 +231,8 @@ void EXTRA()
         PARAMSLIST1();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[CRO_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -258,7 +268,8 @@ void STMT()
         READSTMT();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -273,6 +284,9 @@ void EXPSTMT()
     case PV_TOKEN:
         Symbole_Suiv();
         break;
+    default:
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[COLON_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;        
     }
 }
 
@@ -358,7 +372,8 @@ void LOCALDECLS1()
         CONSTANT();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -403,7 +418,8 @@ void STMTLIST1()
         Symbole_Suiv(); //}
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;
     }
 }
 
@@ -435,6 +451,10 @@ void ITERSTMT()
         Test_Symbole(DO_TOKEN);
         STMT();
         break;
+    default:
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[WHILE_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+        break;        
+
     }
 }
 
@@ -529,11 +549,12 @@ void FSIMPLEEXP1()
     case FALSE_TOKEN:
         CONSTANT();
         break;
-    default:
-        //erreur
-
     case NULL_TOKEN:
         break;
+    default:
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
+
+
     }
 }
 
@@ -586,7 +607,7 @@ void LISTID1()
         Symbole_Suiv();
         Test_Symbole(PV_TOKEN);
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[VIR_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -612,7 +633,7 @@ void EXP()
         SIMPLEEXP();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[COLON_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -716,7 +737,7 @@ void SIMPLEEXP1()
         ARGLIST1();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -825,7 +846,7 @@ void ANDEXP1()
         ARGLIST1();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -847,6 +868,8 @@ void NOTEXP()
     case ID_TOKEN:
         COMPAREXP();
         break;
+    default:
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);        
     }
 }
 
@@ -964,7 +987,7 @@ void COMPAREXTRA()
         ARGLIST1();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -981,7 +1004,7 @@ void COMPAROP()
         Symbole_Suiv();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1105,7 +1128,7 @@ void SUMEXP1()
         ARGLIST1();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1118,7 +1141,7 @@ void SUMOP()
         Symbole_Suiv();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1249,7 +1272,7 @@ void MULEXP1()
         ARGLIST1();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1263,7 +1286,7 @@ void MULOP()
         Symbole_Suiv();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1284,7 +1307,7 @@ void FACTOR()
         MUTABLE();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1420,7 +1443,7 @@ void MUTABLEEXTRA()
         ARGLIST1();
         break;
     default:
-        //erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[CRO_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1443,7 +1466,7 @@ void IMMUTABLE()
         CONSTANT();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[PO_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1476,7 +1499,7 @@ void ARGS()
     case PF_TOKEN:
         Symbole_Suiv();
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1498,7 +1521,7 @@ void ARGLIST1()
         Symbole_Suiv();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[VIR_TOKEN].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
 
@@ -1514,6 +1537,6 @@ void CONSTANT()
         Symbole_Suiv();
         break;
     default:
-        // erreur
+        printf("%s\n dans la ligne : %d colonne :%d \n", maperror[Cour_Token.token].message_erreur, Cour_Token.ligne, Cour_Token.colonne);
     }
 }
